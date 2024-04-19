@@ -9,6 +9,7 @@
       v-if="showModal"
       :title="`Sign up for the Giveaway!`"
       :content="`Grab your ninga swag for half price!`"
+      theme="sale"
       @modalHandler="modalHandler"
     >
       <p>Do It Fast!!!</p>

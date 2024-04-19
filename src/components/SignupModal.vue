@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <div @click="$emit('modalHandler', false)" id="container">
-      <div @click.stop="" id="signup-modal">
+      <div :class="['sale-theme']" @click.stop="" id="signup-modal">
         <h1>{{ title }}</h1>
         <p>{{ content }}</p>
         <slot>Default Slot Text</slot>
@@ -13,12 +13,12 @@
 
 <script>
 export default {
-  props: ["title", "content"],
+  props: ["title", "content", "theme"],
   data() {
     return {};
   },
   methods:{
-
+    //ec283a
   }
 };
 </script>
