@@ -9,11 +9,13 @@
       v-if="showModal"
       :title="`Sign up for the Giveaway!`"
       :content="`Grab your ninga swag for half price!`"
-      theme="sale"
+      :theme="theme"
       @modalHandler="modalHandler"
     >
-      <p>Do It Fast!!!</p>
-      <template #links><a class="link">SignUp</a><a class="link">Log In</a></template>
+      <p :class="{'sale-color' : theme === 'sale'}">Do It Fast!!!</p>
+      <template #links
+        ><a :class="{'sale-btn' : theme === 'sale'}" class="link">SignUp</a><a :class="{'sale-btn' : theme === 'sale'}" class="link">Log In</a></template
+      >
     </signup-modal>
   </div>
 </template>
@@ -26,6 +28,7 @@ export default {
   data() {
     return {
       showModal: false,
+      theme: "sale",
     };
   },
   methods: {
@@ -80,18 +83,29 @@ p {
   color: #81898c;
 }
 
-.link{
-  border: 1px solid #40B4AC;
+.link {
+  border: 1px solid #40b4ac;
   margin: 2rem 1rem 1rem 0;
   padding: 0.5rem 0.8rem;
   border-radius: 0.3rem;
   cursor: pointer;
-  color: #40B4AC;
+  color: #40b4ac;
 }
 
-.link:hover{
-  background-color: #40B4AC;
-  color:white
+.link:hover {
+  background-color: #40b4ac;
+  color: white;
 }
+
+.sale-btn{
+  color: white;
+  border: 1px solid white;
+}
+
+.sale-btn:hover {
+  background-color: white;
+  color: #ec283a;
+}
+
 </style>
 

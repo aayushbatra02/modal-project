@@ -1,9 +1,13 @@
 <template>
   <Teleport to="body">
     <div @click="$emit('modalHandler', false)" id="container">
-      <div :class="['sale-theme']" @click.stop="" id="signup-modal">
-        <h1>{{ title }}</h1>
-        <p>{{ content }}</p>
+      <div
+        @click.stop=""
+        :class="{ 'sale-bg': theme === 'sale' }"
+        id="signup-modal"
+      >
+        <h1 :class="{ 'sale-color': theme === 'sale' }">{{ title }}</h1>
+        <p :class="{ 'sale-color': theme === 'sale' }">{{ content }}</p>
         <slot>Default Slot Text</slot>
         <slot name="links"></slot>
       </div>
@@ -17,13 +21,11 @@ export default {
   data() {
     return {};
   },
-  methods:{
-    //ec283a
-  }
+  methods: {},
 };
 </script>
 
-<style scoped>
+<style>
 #container {
   position: absolute;
   inset: 0;
@@ -43,16 +45,23 @@ export default {
   position: absolute;
   inset: 0;
   text-align: center;
-  cursor:default
+  cursor: default;
+}
+
+.sale-bg {
+  background-color: #ec283a !important;
+}
+
+.sale-color {
+  color: white !important;
 }
 
 #container #signup-modal h1 {
-  color:#40B4AC;
+  color: #40b4ac;
   margin-bottom: 2rem;
 }
 
 #container #signup-modal p {
-  color: #81898C
+  color: #81898c;
 }
-
 </style>
