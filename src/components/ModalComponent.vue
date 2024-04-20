@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <div @click.self="$emit('modalHandler', false)" id="container">
-      <div :class="{ 'sale-bg': theme === 'sale' }" class="modal-component">
+      <div :class="{ 'sale-bg sale-color': theme === 'sale' }" class="modal-component">
         <h1>{{ title }}</h1>
         <p :class="{ 'sale-color': theme === 'sale' }">{{ content }}</p>
         <slot>Default Slot Text</slot>
@@ -42,12 +42,11 @@ export default {
 }
 
 .sale-bg {
-  background-color: #ec283a !important;
-  color: white;
+  background-color: #ec283a;
 }
 
 .sale-color {
-  color: white !important;
+  color: white;
 }
 
 h1 {
