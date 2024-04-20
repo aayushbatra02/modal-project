@@ -1,11 +1,7 @@
 <template>
   <Teleport to="body">
-    <div @click="$emit('modalHandler', false)" id="container">
-      <div
-        @click.stop=""
-        :class="{ 'sale-bg': theme === 'sale' }"
-        id="signup-modal"
-      >
+    <div @click.self="$emit('modalHandler', false)" id="container">
+      <div :class="{ 'sale-bg': theme === 'sale' }" id="modal-component">
         <h1 :class="{ 'sale-color': theme === 'sale' }">{{ title }}</h1>
         <p :class="{ 'sale-color': theme === 'sale' }">{{ content }}</p>
         <slot>Default Slot Text</slot>
@@ -18,10 +14,6 @@
 <script>
 export default {
   props: ["title", "content", "theme"],
-  data() {
-    return {};
-  },
-  methods: {},
 };
 </script>
 
@@ -35,7 +27,7 @@ export default {
   cursor: pointer;
 }
 
-#container #signup-modal {
+#container #modal-component {
   width: max-content;
   height: max-content;
   margin: auto;
@@ -56,12 +48,12 @@ export default {
   color: white !important;
 }
 
-#container #signup-modal h1 {
+#container #modal-component h1 {
   color: #40b4ac;
   margin-bottom: 2rem;
 }
 
-#container #signup-modal p {
+#container #modal-component p {
   color: #81898c;
 }
 </style>

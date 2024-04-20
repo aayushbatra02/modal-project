@@ -5,7 +5,7 @@
     <button @click="focusInput">Focus</button>
     <br />
     <button @click="modalHandler(true)">Open Modal</button>
-    <signup-modal
+    <modal-component
       v-if="showModal"
       :title="`Sign up for the Giveaway!`"
       :content="`Grab your ninga swag for half price!`"
@@ -16,19 +16,19 @@
       <template #links
         ><a :class="{'sale-btn' : theme === 'sale'}" class="link">SignUp</a><a :class="{'sale-btn' : theme === 'sale'}" class="link">Log In</a></template
       >
-    </signup-modal>
+    </modal-component>
   </div>
 </template>
 
 <script>
-import SignupModal from "./components/SignupModal.vue";
+import ModalComponent from "./components/ModalComponent.vue";
 
 export default {
-  components: { SignupModal },
+  components: { ModalComponent },
   data() {
     return {
       showModal: false,
-      theme: "sale",
+      theme: "dghfj",
     };
   },
   methods: {
