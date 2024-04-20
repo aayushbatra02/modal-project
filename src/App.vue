@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="main-container">
     <h1>MODAL PROJECT</h1>
     <input type="text" ref="input" />
     <button @click="focusInput">Focus</button>
@@ -57,7 +57,7 @@ export default {
   box-sizing: border-box;
 }
 
-#app {
+#main-container {
   width: max-content;
   margin: 5rem auto;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
