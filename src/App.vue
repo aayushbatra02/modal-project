@@ -8,14 +8,17 @@
     <modal-component
       v-if="showModal"
       :title="`Sign up for the Giveaway!`"
-      :content="`Grab your ninga swag for half price!`"
+      :content="`Grab your ninja swag for half price!`"
       :theme="theme"
       @modalHandler="modalHandler"
     >
-      <p :class="{'sale-color' : theme === 'sale'}">Do It Fast!!!</p>
-      <template #links
-        ><a :class="{'sale-btn' : theme === 'sale'}" class="link">SignUp</a><a :class="{'sale-btn' : theme === 'sale'}" class="link">Log In</a></template
-      >
+      <p :style="[theme === 'sale' ? { color: 'white' } : null]">
+        Do It Fast!!!
+      </p>
+      <template #links>
+        <a :class="getThemeBtnClass" class="link">SignUp</a>
+        <a :class="getThemeBtnClass" class="link">Log In</a>
+      </template>
     </modal-component>
   </div>
 </template>
@@ -28,7 +31,7 @@ export default {
   data() {
     return {
       showModal: false,
-      theme: "dghfj",
+      theme: "sale",
     };
   },
   methods: {
@@ -37,6 +40,11 @@ export default {
     },
     modalHandler(value) {
       this.showModal = value;
+    },
+  },
+  computed: {
+    getThemeBtnClass() {
+      return this.theme === "sale" ? "sale-btn" : null;
     },
   },
 };
@@ -79,8 +87,8 @@ button:hover {
 }
 
 p {
-  margin: 1rem 0;
   color: #81898c;
+  margin: 1rem 0;
 }
 
 .link {
@@ -97,7 +105,7 @@ p {
   color: white;
 }
 
-.sale-btn{
+.sale-btn {
   color: white;
   border: 1px solid white;
 }
@@ -106,6 +114,5 @@ p {
   background-color: white;
   color: #ec283a;
 }
-
 </style>
 

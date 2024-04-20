@@ -1,8 +1,8 @@
 <template>
   <Teleport to="body">
     <div @click.self="$emit('modalHandler', false)" id="container">
-      <div :class="{ 'sale-bg': theme === 'sale' }" id="modal-component">
-        <h1 :class="{ 'sale-color': theme === 'sale' }">{{ title }}</h1>
+      <div :class="{ 'sale-bg': theme === 'sale' }" class="modal-component">
+        <h1>{{ title }}</h1>
         <p :class="{ 'sale-color': theme === 'sale' }">{{ content }}</p>
         <slot>Default Slot Text</slot>
         <slot name="links"></slot>
@@ -27,7 +27,7 @@ export default {
   cursor: pointer;
 }
 
-#container #modal-component {
+.modal-component {
   width: max-content;
   height: max-content;
   margin: auto;
@@ -38,22 +38,19 @@ export default {
   inset: 0;
   text-align: center;
   cursor: default;
+  color: #40b4ac;
 }
 
 .sale-bg {
   background-color: #ec283a !important;
+  color: white;
 }
 
 .sale-color {
   color: white !important;
 }
 
-#container #modal-component h1 {
-  color: #40b4ac;
+h1 {
   margin-bottom: 2rem;
-}
-
-#container #modal-component p {
-  color: #81898c;
 }
 </style>
