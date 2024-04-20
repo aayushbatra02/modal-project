@@ -2,22 +2,24 @@
   <div id="main-container">
     <h1>MODAL PROJECT</h1>
     <input type="text" ref="input" />
-    <button @click="focusInput">Focus</button>
-    <br />
-    <button @click="modalHandler(true)">Open Modal</button>
+    <button class="button" @click="focusInput">Focus</button>
+    <button class="button" @click="handleModal(true)">Open Modal</button>
     <modal-component
       v-if="showModal"
       :title="`Sign up for the Giveaway!`"
       :content="`Grab your ninja swag for half price!`"
       :theme="theme"
-      @modalHandler="modalHandler"
+      @handleModal="handleModal"
     >
-      <p :style="[theme === 'sale' ? { color: 'white' } : null]">
+      <p
+        :class="{ 'sale-color': theme === 'sale' }"
+      >
         Do It Fast!!!
       </p>
       <template #links>
         <a :class="getThemeBtnClass" class="link">SignUp</a>
         <a :class="getThemeBtnClass" class="link">Log In</a>
+        <button @click="changeTheme" :class="getThemeBtnClass" class="link">{{theme === 'sale' ? 'Normal' : 'Sale'}} Theme</button>
       </template>
     </modal-component>
   </div>
@@ -31,16 +33,19 @@ export default {
   data() {
     return {
       showModal: false,
-      theme: "sale",
+      theme: "normal",
     };
   },
   methods: {
     focusInput() {
       this.$refs.input.focus();
     },
-    modalHandler(value) {
+    handleModal(value) {
       this.showModal = value;
     },
+    changeTheme(){
+      this.theme = this.theme === 'sale' ? 'normal' : 'sale'
+    }
   },
   computed: {
     getThemeBtnClass() {
@@ -72,16 +77,17 @@ input {
   padding: 0.5rem;
 }
 
-button {
+.button {
   cursor: pointer;
   background: none;
   margin-top: 1rem;
   border: 1px solid;
   padding: 0.3rem 0.6rem;
   border-radius: 0.3rem;
+  display: block;
 }
 
-button:hover {
+.button:hover {
   background-color: black;
   color: white;
 }
@@ -93,7 +99,8 @@ p {
 
 .link {
   border: 1px solid #40b4ac;
-  margin: 2rem 1rem 1rem 0;
+  background-color: transparent;
+  margin: 1rem 1rem 1rem 0;
   padding: 0.5rem 0.8rem;
   border-radius: 0.3rem;
   cursor: pointer;

@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div @click.self="$emit('modalHandler', false)" id="container">
+    <div @click.self="$emit('handleModal', false)" id="container">
       <div :class="{ 'sale-bg sale-color': theme === 'sale' }" class="modal-component">
         <h1>{{ title }}</h1>
         <p :class="{ 'sale-color': theme === 'sale' }">{{ content }}</p>
@@ -14,6 +14,7 @@
 <script>
 export default {
   props: ["title", "content", "theme"],
+  emits:["handleModal"]
 };
 </script>
 
