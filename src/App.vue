@@ -1,9 +1,32 @@
 <template>
-  <div id="main-container">
-    <h1>MODAL PROJECT</h1>
-    <input type="text" ref="input" />
-    <button class="button" @click="focusInput">Focus</button>
-    <button class="button" @click="handleModal(true)">Open Modal</button>
+  <div class="mt-20 mx-auto w-max" id="main-container">
+    <h1 class="text-2xl font-bold">MODAL PROJECT</h1>
+    <input
+      class="border border-gray-700 w-60 rounded-md my-4"
+      type="text"
+      ref="input"
+    />
+    <div class="flex gap-4">
+      <button
+        class="w-max bg-black hover:bg-white text-white hover:text-black rounded px-3 py-1 border border-black"
+        @click="focusInput"
+      >
+        Focus
+      </button>
+      <button
+        class="w-max bg-black hover:bg-white text-white hover:text-black rounded px-3 py-1 border border-black"
+        @click="handleModal(true)"
+      >
+        Open Modal
+      </button>
+      <button
+        class="w-max bg-black hover:bg-white text-white hover:text-black rounded px-3 py-1 border border-black"
+        @click="changeTheme"
+      >
+        {{ theme === "sale" ? "Normal" : "Sale" }} Theme
+      </button>
+    </div>
+
     <modal-component
       v-if="showModal"
       :title="`Sign up for the Giveaway!`"
@@ -11,15 +34,13 @@
       :theme="theme"
       @handleModal="handleModal"
     >
-      <p
-        :class="{ 'sale-color': theme === 'sale' }"
-      >
-        Do It Fast!!!
-      </p>
+      <p :class="{ 'sale-color': theme === 'sale' }">Do It Fast!!!</p>
       <template #links>
         <a :class="getThemeBtnClass" class="link">SignUp</a>
         <a :class="getThemeBtnClass" class="link">Log In</a>
-        <button @click="changeTheme" :class="getThemeBtnClass" class="link">{{theme === 'sale' ? 'Normal' : 'Sale'}} Theme</button>
+        <button @click="changeTheme" :class="getThemeBtnClass" class="link">
+          {{ theme === "sale" ? "Normal" : "Sale" }} Theme
+        </button>
       </template>
     </modal-component>
   </div>
@@ -43,9 +64,9 @@ export default {
     handleModal(value) {
       this.showModal = value;
     },
-    changeTheme(){
-      this.theme = this.theme === 'sale' ? 'normal' : 'sale'
-    }
+    changeTheme() {
+      this.theme = this.theme === "sale" ? "normal" : "sale";
+    },
   },
   computed: {
     getThemeBtnClass() {
@@ -61,13 +82,13 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-
+/* 
 #main-container {
   width: max-content;
   margin: 5rem auto;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
+} */
+/* 
 input {
   margin-top: 1rem;
   height: 2rem;
@@ -120,6 +141,6 @@ p {
 .sale-btn:hover {
   background-color: white;
   color: #ec283a;
-}
+} */
 </style>
 
