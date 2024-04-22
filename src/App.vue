@@ -8,19 +8,19 @@
     />
     <div class="flex gap-6">
       <button
-        class="w-max bg-black hover:bg-white text-white hover:text-black rounded px-3 py-1 border border-black"
+        class="w-max bg-white text-black hover:bg-black hover:text-white rounded px-3 py-1 border border-black"
         @click="focusInput"
       >
         Focus
       </button>
       <button
-        class="w-max bg-black hover:bg-white text-white hover:text-black rounded px-3 py-1 border border-black"
+        class="w-max bg-white text-black hover:bg-black hover:text-white rounded px-3 py-1 border border-black"
         @click="handleModal(true)"
       >
         Open Modal
       </button>
       <button
-        class="w-max bg-black hover:bg-white text-white hover:text-black rounded px-3 py-1 border border-black"
+        class="w-max bg-white text-black hover:bg-black hover:text-white rounded px-3 py-1 border border-black"
         @click="changeTheme"
       >
         {{ theme === "sale" ? "Normal" : "Sale" }} Theme
@@ -44,19 +44,19 @@
         <div class="flex justify-center gap-6">
           <div
             :class="getThemeButtonClass"
-            class="border text-center px-3 py-1 rounded cursor-pointer hover:bg-transparent"
+            class="border text-center px-3 py-1 rounded cursor-pointer hover:text-white"
           >
             <a>SignUp</a>
           </div>
           <div
             :class="getThemeButtonClass"
-            class="border text-center px-3 py-1 rounded cursor-pointer hover:bg-transparent"
+            class="border text-center px-3 py-1 rounded cursor-pointer hover:text-white"
           >
-            <a>SignUp</a>
+            <a>LogIn</a>
           </div>
           <button
             :class="getThemeButtonClass"
-            class="border text-center px-3 py-1 rounded cursor-pointer hover:bg-transparent"
+            class="border text-center px-3 py-1 rounded cursor-pointer hover:text-white"
             @click="changeTheme"
           >
             {{ theme === "sale" ? "Normal" : "Sale" }} Theme
@@ -92,8 +92,8 @@ export default {
   computed: {
     getThemeButtonClass() {
       return this.theme === "sale"
-        ? "border-white bg-white text-customBlue hover:text-white"
-        : "border-black bg-black text-white hover:text-black";
+        ? "hover:bg-white hover:text-customRed"
+        : "border-customBlue hover:bg-customBlue";
     },
   },
 };

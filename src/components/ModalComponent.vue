@@ -6,7 +6,7 @@
     >
       <div
         :class="getThemeBgClass"
-        class="h-46 my-auto flex flex-col align-center justify-center p-6 text-customBlue cursor-default"
+        class="my-auto flex flex-col align-center justify-center p-10 text-customBlue cursor-default"
       >
         <h1 class="text-center font-bold text-2xl mb-4">{{ title }}</h1>
         <p
@@ -29,7 +29,7 @@ export default {
   computed: {
     getThemeBgClass() {
       return this.theme === "sale"
-        ? "bg-customBlue text-white"
+        ? "bg-customRed text-white"
         : "bg-white text-black";
     },
   },

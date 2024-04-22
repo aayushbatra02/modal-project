@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customBlue: "#40b4ac",
+        customRed: "#ec283a",
+        customBlue:"#40b4ac",
         secondary: "#ffed4a",
         danger: "#e3342f",
         white: "white",
