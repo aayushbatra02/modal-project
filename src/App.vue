@@ -1,12 +1,12 @@
 <template>
-  <div class="mt-20 mx-auto w-max" id="main-container">
+  <div class="flex flex-col items-center gap-6 mt-20 mx-auto w-max">
     <h1 class="text-2xl font-bold">MODAL PROJECT</h1>
     <input
-      class="border border-gray-700 w-60 rounded-md my-4"
+      class="border border-gray-700 w-60 rounded-md py-1 px-3"
       type="text"
       ref="input"
     />
-    <div class="flex gap-4">
+    <div class="flex gap-6">
       <button
         class="w-max bg-black hover:bg-white text-white hover:text-black rounded px-3 py-1 border border-black"
         @click="focusInput"
@@ -34,13 +34,34 @@
       :theme="theme"
       @handleModal="handleModal"
     >
-      <p :class="{ 'sale-color': theme === 'sale' }">Do It Fast!!!</p>
+      <p
+        :class="[theme === 'sale' ? 'text-white' : 'text-grey']"
+        class="text-center mb-4"
+      >
+        Do It Fast!!!
+      </p>
       <template #links>
-        <a :class="getThemeBtnClass" class="link">SignUp</a>
-        <a :class="getThemeBtnClass" class="link">Log In</a>
-        <button @click="changeTheme" :class="getThemeBtnClass" class="link">
-          {{ theme === "sale" ? "Normal" : "Sale" }} Theme
-        </button>
+        <div class="flex justify-center gap-6">
+          <div
+            :class="getThemeButtonClass"
+            class="border text-center px-3 py-1 rounded cursor-pointer hover:bg-transparent"
+          >
+            <a>SignUp</a>
+          </div>
+          <div
+            :class="getThemeButtonClass"
+            class="border text-center px-3 py-1 rounded cursor-pointer hover:bg-transparent"
+          >
+            <a>SignUp</a>
+          </div>
+          <button
+            :class="getThemeButtonClass"
+            class="border text-center px-3 py-1 rounded cursor-pointer hover:bg-transparent"
+            @click="changeTheme"
+          >
+            {{ theme === "sale" ? "Normal" : "Sale" }} Theme
+          </button>
+        </div>
       </template>
     </modal-component>
   </div>
@@ -69,8 +90,10 @@ export default {
     },
   },
   computed: {
-    getThemeBtnClass() {
-      return this.theme === "sale" ? "sale-btn" : null;
+    getThemeButtonClass() {
+      return this.theme === "sale"
+        ? "border-white bg-white text-customBlue hover:text-white"
+        : "border-black bg-black text-white hover:text-black";
     },
   },
 };
@@ -82,65 +105,5 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-/* 
-#main-container {
-  width: max-content;
-  margin: 5rem auto;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-} */
-/* 
-input {
-  margin-top: 1rem;
-  height: 2rem;
-  display: block;
-  border: 1px solid;
-  border-radius: 0.3rem;
-  padding: 0.5rem;
-}
-
-.button {
-  cursor: pointer;
-  background: none;
-  margin-top: 1rem;
-  border: 1px solid;
-  padding: 0.3rem 0.6rem;
-  border-radius: 0.3rem;
-  display: block;
-}
-
-.button:hover {
-  background-color: black;
-  color: white;
-}
-
-p {
-  color: #81898c;
-  margin: 1rem 0;
-}
-
-.link {
-  border: 1px solid #40b4ac;
-  background-color: transparent;
-  margin: 1rem 1rem 1rem 0;
-  padding: 0.5rem 0.8rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  color: #40b4ac;
-}
-
-.link:hover {
-  background-color: #40b4ac;
-  color: white;
-}
-
-.sale-btn {
-  color: white;
-  border: 1px solid white;
-}
-
-.sale-btn:hover {
-  background-color: white;
-  color: #ec283a;
-} */
 </style>
 
