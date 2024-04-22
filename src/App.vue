@@ -44,19 +44,19 @@
         <div class="flex justify-center gap-6">
           <div
             :class="getThemeButtonClass"
-            class="border text-center px-3 py-1 rounded cursor-pointer hover:text-white"
+            class="border text-center px-3 py-1 rounded cursor-pointer"
           >
             <a>SignUp</a>
           </div>
           <div
             :class="getThemeButtonClass"
-            class="border text-center px-3 py-1 rounded cursor-pointer hover:text-white"
+            class="border text-center px-3 py-1 rounded cursor-pointer"
           >
             <a>LogIn</a>
           </div>
           <button
             :class="getThemeButtonClass"
-            class="border text-center px-3 py-1 rounded cursor-pointer hover:text-white"
+            class="border text-center px-3 py-1 rounded cursor-pointer"
             @click="changeTheme"
           >
             {{ theme === "sale" ? "Normal" : "Sale" }} Theme
@@ -93,7 +93,7 @@ export default {
     getThemeButtonClass() {
       return this.theme === "sale"
         ? "hover:bg-white hover:text-customRed"
-        : "border-customBlue hover:bg-customBlue";
+        : "border-customBlue hover:bg-customBlue hover:text-white";
     },
   },
 };
